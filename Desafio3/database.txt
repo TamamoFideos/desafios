@@ -3,12 +3,18 @@
     "title": "Galletas",
     "price": 60,
     "thumbnail": "galletaimage.png",
-    "id": 1
+    "id": 3
   },
   {
     "title": "Galletas",
     "price": 60,
     "thumbnail": "galletaimage.png",
-    "id": 3
+    "id": 4
+  },
+  {
+    "title": "Galletas",
+    "price": 60,
+    "thumbnail": "galletaimage.png",
+    "id": 5
   }
 ]

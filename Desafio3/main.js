@@ -10,6 +10,6 @@ const product = {
 /*container.save(product).then(() =>{
     console.log('El producto se guardo con exito')
 });*/
-container.deleteById(2).then(() =>{
+container.deleteById(1).then(() =>{
     console.log('El producto se borro con exito');
 });

@@ -3,59 +3,51 @@ const fs = require('fs');
 class Container {
     constructor() {
         this.path = 'database.txt';
-        this.id = 0;
     }
-    async save (product = {}){
+    async save (product){
+        let id;
         let products;
-        if(this.id === 0) {
-            products = await this.getAll();
-            if(products.length !== 0){
-                const lastProduct = products[products.length-1];
-                this.id = lastProduct.id + 1;
-            }else{
-                this.id = 1;
-            }
+        products = await this.getAll();
+        if(products.length !== 0){
+            const lastProduct = products[products.length-1];
+            id = lastProduct.id + 1;
+        }else{
+            id = 1;
         }
-        product.id = this.id;
-        this.id++;
+        product.id = id;
         products.push(product);
-        await fs.promises.writeFile(this.path, JSON.stringify(products));
+        await fs.promises.writeFile(this.path, JSON.stringify(products, null, 2));
+        return id;
     }
 
     async getById(id = 1){
         const products = await this.getAll();
-        return products.find( product => product.id === id);
+        const product = products.find( product => product.id === id);
+        if(!product){
+            return null
+        }
+        return product;
     }
 
     async getAll(){
-        if(!fs.existsSync(this.path)){
-            return [];
-        }
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
             return JSON.parse(data);
         }catch (e){
-            await fs.promises.writeFile(this.path, JSON.stringify([]));
+            await fs.promises.writeFile(this.path, JSON.stringify([],null, 2));
             return [];
         }
     }
 
     async deleteById (id = 1){
         let products = await this.getAll();
-        let deleteProductId;
-        if (products){
-            products.map( (product, index) => {
-                if(product.id === id){
-                    deleteProductId = index;
-                }
-            });
-        }
-        products = products.slice(deleteProductId, 1);
-        await fs.promises.writeFile(this.path, JSON.stringify(products));
+        const deleteProduct = await this.getById(id);
+        const newProducts = products.filter( producto => producto.id !== deleteProduct.id );
+        await fs.promises.writeFile(this.path, JSON.stringify(newProducts, null, 2));
     }
 
     async deleteAll(){
-        await fs.promises.writeFile(this.path, JSON.stringify([]));
+        await fs.promises.writeFile(this.path, JSON.stringify([], null, 2));
     }
 }
 
