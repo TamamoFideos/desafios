@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Pasteles",
+    "price": 60,
+    "thumbnail": "galletaimage.png",
+    "id": 5
+  },
+  {
+    "title": "Gelatinas",
+    "price": "123",
+    "thumbnail": "productos.png",
+    "id": 6
+  }
+]
