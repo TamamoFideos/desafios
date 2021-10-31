@@ -1,0 +1,20 @@
+extends layout
+
+block historial
+    table(class='table')
+        thread
+            tr
+                th(scope='col')='id'
+                th(scope='col')='NombreProducto'
+                th(scope='col')='Precio'
+                th(scope='col')='Imagen'
+        tbody
+            each val in products
+                tr
+                    th(scope='row')= val.id
+                    th(scope='row')= val.title
+                    th(scope='row')= val.price
+                    th(scope='row')
+                        img(src=val.thumbnail, style={height: '50px', width: '50px'})
+
+    a(class="btn btn-primary", href="/api/products/pug") Ingresar Producto

@@ -1,0 +1,17 @@
+<%- include inicio.ejs %>
+<form action="/api/products"  method="post">
+    <div class="form-group">
+        <label for="title">Nombre Producto</label>
+        <input type="text" class="form-control" id="title" placeholder="Nombre" name="title">
+    </div>
+    <div class="form-group">
+        <label for="price">Precio</label>
+        <input type="number" class="form-control" id="price" placeholder="precio" name="price">
+    </div>
+    <div class="form-group">
+        <label for="thumbnail">Link Imagen</label>
+        <input type="text" class="form-control" id="thumbnail" placeholder="imagen" name="thumbnail">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a type="submit" class="btn btn-primary" href="/api/products/historial">Historial Productos</a>

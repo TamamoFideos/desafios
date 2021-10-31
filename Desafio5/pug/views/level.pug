@@ -1,0 +1,18 @@
+extends layout
+
+block formulario
+    // el guión permite definir variables
+
+    form( action="/api/products", method="post")
+        div(class="form-group")
+            label(for="title") Nombre del Producto
+            input(type="text", name="title", value="", placeholder="Nombre del producto", class="form-control", id="title", required)
+        div(class="form-group")
+            label(for="price") Precio
+            input(type="number", name="price", value="", placeholder="Nombre del producto", class="form-control", id="price", required)
+        div(class="form-group")
+            label(for="thumbnail") Imagen
+            input(type="text", name="thumbnail", value="", placeholder="Nombre del producto", class="form-control", id="thumbnail", required)
+        button(class="btn btn-success mt-3 mb-5") Enviar
+
+    a(class="btn btn-primary", href="/api/products/historial") Historial Productos
